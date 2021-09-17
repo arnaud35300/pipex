@@ -7,7 +7,7 @@ LIBFT		= 	./libft
 
 # [ COMPILATION VARIABLES ] #
 
-CC				=	gcc
+CC				=	gcc -g
 CFLAGS			=	#-Wall -Wextra -Werror
 LIBFT_INC		=	-I./libft -I./libft/char -I./libft/file -I./libft/int -I./libft/lst -I./libft/mem -I./libft/print -I./libft/str
 PROG_INC		=
@@ -35,7 +35,7 @@ $(OBJ):
 			@mkdir -p $(OBJ)
 
 $(LIBFT):
-			@$(MAKE) bonus -C $(LIBFT)
+			@$(MAKE) bonus -s -C $(LIBFT)
 
 $(OBJ)/%.o: %.c
 			$(CC) $(CFLAGS) -I./includes $(LIBFT_INC) $(PROG_INC) -c $< -o $@
