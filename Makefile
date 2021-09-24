@@ -7,8 +7,8 @@ LIBFT		= 	./libft
 
 # [ COMPILATION VARIABLES ] #
 
-CC				=	gcc -Wall -Wextra -Werror 
-CFLAGS			=	#-Wall -Wextra -Werror
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror
 LIBFT_INC		=	-I./libft -I./libft/char -I./libft/file -I./libft/int -I./libft/lst -I./libft/mem -I./libft/print -I./libft/str
 PROG_INC		=
 # [ SRCS ]
