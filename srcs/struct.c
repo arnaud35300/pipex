@@ -6,18 +6,20 @@
 /*   By: arguilla <arguilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 02:58:24 by arguilla          #+#    #+#             */
-/*   Updated: 2021/09/23 20:24:11 by arguilla         ###   ########.fr       */
+/*   Updated: 2021/09/24 05:28:53 by arguilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void	print_file_error(char *filename, char *error)
+void	print_file_error(char *filename, char *error)
 {
 	ft_putstr_fd("pipex : ", 2);
-	ft_putstr_fd(filename, 2);
+	if (filename)
+		ft_putstr_fd(filename, 2);
 	ft_putstr_fd(" : ", 2);
-	ft_putstr_fd(error, 2);
+	if (error)
+		ft_putstr_fd(error, 2);
 	ft_putstr_fd("\n", 2);
 }
 

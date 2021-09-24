@@ -6,7 +6,7 @@
 /*   By: arguilla <arguilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 20:29:17 by arguilla          #+#    #+#             */
-/*   Updated: 2021/09/24 04:06:37 by arguilla         ###   ########.fr       */
+/*   Updated: 2021/09/24 04:57:59 by arguilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*get_cmd_file(char *cmd, char **envp);
 char	*find_path(char *cmd, char **paths);
 char	*get_paths(char **envp);
 int		print_error(char *s1, char *s2, int status);
+void	print_file_error(char *filename, char *error);
 
 #endif
