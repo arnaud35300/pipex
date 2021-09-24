@@ -6,7 +6,7 @@
 /*   By: arguilla <arguilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 02:56:00 by arguilla          #+#    #+#             */
-/*   Updated: 2021/09/23 20:26:34 by arguilla         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:31:31 by arguilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	exit_and_free(t_pipex *p, int status)
 		return (status);
 	free_tab(p->cmd1);
 	free_tab(p->cmd2);
+	if (p->fds[0])
+		close(p->fds[0]);
+	if (p->fds[1])
+		close(p->fds[1]);
 	free(p);
 	return (status);
 }
