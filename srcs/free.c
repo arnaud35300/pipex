@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arguilla <arguilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/17 20:16:38 by arguilla          #+#    #+#             */
-/*   Updated: 2021/09/24 04:05:50 by arguilla         ###   ########.fr       */
+/*   Created: 2021/09/23 02:56:00 by arguilla          #+#    #+#             */
+/*   Updated: 2021/09/23 20:26:34 by arguilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int ac, char **av, char **envp)
+void	free_tab(char **cmd)
 {
-	t_pipex	*p;
+	int	i;
 
-	if (ac != 5)
-		return (print_error("Usage: ./pipex infile cmd1 cmd2 outfile\n",
-				"", 1));
-	if (!init_struct(&p, ac, av, envp))
-		return (exit_and_free(p, 1));
-	return (exit_and_free(p, pipex(p)));
+	i = -1;
+	if (!cmd)
+		return ;
+	while (cmd[++i])
+		free(cmd[i]);
+	free(cmd);
+}
+
+int	exit_and_free(t_pipex *p, int status)
+{
+	if (!p)
+		return (status);
+	free_tab(p->cmd1);
+	free_tab(p->cmd2);
+	free(p);
+	return (status);
 }

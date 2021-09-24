@@ -6,7 +6,7 @@
 /*   By: arguilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 21:18:42 by arguilla          #+#    #+#             */
-/*   Updated: 2021/09/08 05:11:51 by arguilla         ###   ########.fr       */
+/*   Updated: 2021/09/22 23:15:30 by arguilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*r;
 	size_t	i;
 
+	if (!s1 || !s2)
+		return (NULL);
 	r = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!r)
 		return (NULL);

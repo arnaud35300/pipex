@@ -7,13 +7,18 @@ LIBFT		= 	./libft
 
 # [ COMPILATION VARIABLES ] #
 
-CC				=	gcc -g
+CC				=	gcc -Wall -Wextra -Werror 
 CFLAGS			=	#-Wall -Wextra -Werror
 LIBFT_INC		=	-I./libft -I./libft/char -I./libft/file -I./libft/int -I./libft/lst -I./libft/mem -I./libft/print -I./libft/str
 PROG_INC		=
 # [ SRCS ]
 
 SRCS		=	main.c\
+				pipex.c\
+				free.c\
+				struct.c\
+				cmd.c\
+				error.c\
 
 # [ OBJECTS ] #
 
@@ -28,20 +33,20 @@ VPATH		=	includes:srcs:libft:
 
 all:		$(NAME)
 
-$(NAME):	$(LIBFT) $(OBJ) $(OBJS)
-			$(CC) $(CFLAGS) -I./includes -I./libft $(PROG_INC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a
+$(NAME):	$(OBJS)
+			$(MAKE) bonus -s -C $(LIBFT)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -I./includes $(LIBFT_INC) $(PROG_INC) $(LIBFT)/libft.a
 
 $(OBJ):
-			@mkdir -p $(OBJ)
+			mkdir -p $(OBJ)
 
-$(LIBFT):
-			@$(MAKE) bonus -s -C $(LIBFT)
+$(OBJS):	| $(OBJ)
 
 $(OBJ)/%.o: %.c
-			$(CC) $(CFLAGS) -I./includes $(LIBFT_INC) $(PROG_INC) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@ -I./includes $(LIBFT_INC) $(PROG_INC)
 clean:
-			@$(RM) $(OBJ)
-			@$(MAKE) clean -C $(LIBFT)
+			$(RM) $(OBJ)
+			$(MAKE) clean -C $(LIBFT)
 
 fclean:		clean
 			@$(RM) $(NAME) 2>/dev/null
